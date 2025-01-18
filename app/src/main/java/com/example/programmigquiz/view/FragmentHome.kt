@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.programmigquiz.R
 import com.example.programmigquiz.database.DatabaseCopyHelper
 import com.example.programmigquiz.databinding.FragmentHomeBinding
 
@@ -24,9 +26,8 @@ class FragmentHome : Fragment() {
         }
 
         binding.btnStartQuiz.setOnClickListener {
-
+            findNavController().navigate(R.id.action_fragmentHome_to_fragmentQuiz)
         }
-
         return binding.root
     }
 

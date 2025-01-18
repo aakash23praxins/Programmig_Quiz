@@ -27,5 +27,22 @@
         android:id="@+id/fragmentResult"
         android:name="com.example.programmigquiz.view.FragmentResult"
         android:label="fragment_result"
-        tools:layout="@layout/fragment_result" />
+        tools:layout="@layout/fragment_result" >
+        <argument
+            android:name="correct"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="wrong"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="skip"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="person_name"
+            app:argType="string"
+            android:defaultValue="JACK" />
+    </fragment>
 </navigation>

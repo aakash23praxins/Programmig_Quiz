@@ -3,4 +3,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="meme">~If it work, Don`t touch it</string>
+    <string name="question_1">Question: </string>
+    <string name="correct_1">Correct: 0</string>
+    <string name="empty_0">Empty: 0</string>
+    <string name="wrong_0">Wrong: 0</string>
 </resources>
