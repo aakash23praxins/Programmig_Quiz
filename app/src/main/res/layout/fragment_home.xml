@@ -6,7 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".view.FragmentHome">
 
+    <EditText
+        android:id="@+id/edtGetName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/rounded_border_topbar"
+        android:elevation="10dp"
+        android:ems="13"
+        android:hint="Enter Your Name "
+        android:padding="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/btnStartQuiz"
+        app:layout_constraintEnd_toEndOf="@+id/btnStartQuiz"
+        app:layout_constraintStart_toStartOf="@+id/btnStartQuiz"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
+        android:id="@+id/imageView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0.5"
@@ -22,21 +42,20 @@
 
     <TextView
         android:id="@+id/btnStartQuiz"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_border"
+        android:layout_margin="20dp"
         android:elevation="22dp"
-        android:padding="30dp"
+        android:background="@drawable/rounded_border_topbar"
         android:text="Start the Quiz..."
         android:textAlignment="center"
+        android:padding="20dp"
         android:textColor="@color/white"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent" />
     <ImageView
         android:id="@+id/imgInfo"
         android:layout_width="40dp"
@@ -53,7 +72,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:background="@drawable/rounded_border"
+        android:background="@drawable/rounded_border_topbar"
         android:backgroundTint="@color/black"
         android:elevation="22dp"
         android:padding="10dp"

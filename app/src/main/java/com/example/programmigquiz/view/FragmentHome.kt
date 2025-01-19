@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.programmigquiz.R
@@ -20,13 +22,24 @@ class FragmentHome : Fragment() {
 
         openAndCreateDatabase()
 
+
         binding.imgInfo.setOnClickListener {
             binding.txtMeme.visibility = View.VISIBLE
             binding.imgInfo.visibility = View.GONE
         }
 
         binding.btnStartQuiz.setOnClickListener {
-            findNavController().navigate(R.id.action_fragmentHome_to_fragmentQuiz)
+            val name = binding.edtGetName.text.toString()
+            val bundle = bundleOf(
+                "name" to name
+            )
+            if (name.isNotEmpty()){
+                findNavController().apply {
+                    navigate(R.id.action_fragmentHome_to_fragmentQuiz, bundle)
+                }
+            }else{
+                Toast.makeText(requireActivity(), "Please fill name first , before starting Quiz...", Toast.LENGTH_SHORT).show()
+            }
         }
         return binding.root
     }

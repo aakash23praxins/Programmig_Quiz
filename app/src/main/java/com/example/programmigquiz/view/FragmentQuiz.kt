@@ -38,44 +38,32 @@ class FragmentQuiz : Fragment() {
 
         binding.btnNext.setOnClickListener {
             try {
+                if (!isOptionChecked) {
+                    emptyText++
+                    binding.txtSkip.text = "Skip: ${emptyText}"
+                }
                 questionText++
                 if (questionText < arrayList.size) {
                     showData()
-                    if (!isOptionChecked) {
-                        emptyText++
-                        binding.txtSkip.text = "Skip: ${emptyText}"
-                    }
                     initialButtonProperties()
                 } else {
-//                    val direction =
-//                        FragmentQuizDirections.actionFragmentQuizToFragmentResult().also {
-//                            it.arguments.putInt("correct",correctText)
-//                            it.arguments.putInt("skip",emptyText)
-//                            it.arguments.putInt("wrong",wrongText)
-//                            it.arguments.putString("name","Mahadev")
-//                        }
-//                    this.findNavController()
-//                        .also {
-//                            it.navigate(direction)
-//                            it.popBackStack(R.id.fragmentQuiz, false)
-//                        }
                     val bundle = bundleOf(
                         "correct" to correctText,
                         "wrong" to wrongText,
                         "empty" to emptyText,
-                        "name" to "PANCHAL",
+                        "name" to arguments?.getString("name"),
                     )
-                    println(bundle)
                     findNavController().also {
                         it.navigate(R.id.action_fragmentQuiz_to_fragmentResult, bundle)
+                        it.popBackStack(R.id.fragmentQuiz, true)
                     }
                     Toast.makeText(requireActivity(), "Done", Toast.LENGTH_SHORT).show()
-                    questionText--
                 }
                 isOptionChecked = false
             } catch (e: IndexOutOfBoundsException) {
                 Toast.makeText(requireActivity(), "Error: Out of bounds", Toast.LENGTH_SHORT).show()
             }
+
         }
 
         binding.btnOptA.setOnClickListener {
@@ -83,15 +71,12 @@ class FragmentQuiz : Fragment() {
         }
         binding.btnOptB.setOnClickListener {
             checkAnswer(binding.btnOptB)
-
         }
         binding.btnOptC.setOnClickListener {
             checkAnswer(binding.btnOptC)
-
         }
         binding.btnOptD.setOnClickListener {
             checkAnswer(binding.btnOptD)
-
         }
 
         return binding.root
@@ -111,12 +96,7 @@ class FragmentQuiz : Fragment() {
         val prefixes = listOf("A:", "B:", "C:", "D:")
         val buttonText = button.text.toString()
         val correctOption = arrayList[questionText].correctAnswer
-//
-//        val getText = prefixes.fold(buttonText) { text, prefix ->
-//            text.removePrefix(prefix)
-//        }
 
-//        println("selected $getText and correct $correctOption")
         if (buttonText == correctOption) {
             button.setBackgroundColor(resources.getColor(R.color.green))
             button.setTextColor(resources.getColor(R.color.white))
@@ -138,8 +118,6 @@ class FragmentQuiz : Fragment() {
 
         isOptionChecked = true
     }
-
-
     private fun initialButtonProperties() {
         binding.btnOptA.apply {
             setBackgroundColor(resources.getColor(R.color.white, requireActivity().theme))
